@@ -1,66 +1,59 @@
 <template>
-  <section class="container">
-    <div>
-      <logo/>
-      <h1 class="title">
-        approval-app
-      </h1>
-      <h2 class="subtitle">
-        My awesome Nuxt.js project
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey">GitHub</a>
-      </div>
+  <div class="main">
+    <div class="container">
+      <ul>
+        <li v-for="tab in tabs" :key="tab" @click="displayPage(tab)">{{ tab }}</li>
+      </ul>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-
 export default {
-  components: {
-    Logo
+  data() {
+    return {
+      tabs: ["All Due", "Pending", "Auto Approval", "COMPLETED"]
+    };
+  },
+  methods:{
+    displayPage(page){
+      
+      console.log("This is " , page , "page");
+    }
   }
-}
+};
 </script>
 
 <style>
-
-.container {
-  min-height: 100vh;
+.main {
+  width: 100%;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.container {
+  width: 320px;
+  height: 480px;
+  border: 2px solid black;
+}
+
+ul {
+  padding: 0px;
+  list-style-type: none;
+}
+li {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 10px;
+  display: inline-block;
   text-align: center;
+  width: 75px;
+  cursor: pointer;
+  color: grey;
 }
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+li:hover {
+  color: black;
+  background-color: lightgrey;
 }
 </style>

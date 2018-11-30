@@ -1,7 +1,15 @@
 const pkg = require('./package')
 
+
+const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? {
+  router: {
+    base: '/<repository-name>/'
+  }
+} : {}
+
 module.exports = {
   mode: 'universal',
+  ...routerBase,
 
   /*
   ** Headers of the page
@@ -52,5 +60,10 @@ module.exports = {
       
     }
   },
-  buildDir: 'docs'
+  generate: {
+    dir: 'docs'
+  },
+  router: {
+    base: '/approval-app/'
+  }
 }
