@@ -60,6 +60,9 @@ module.exports = {
       
     }
   },
+  css: [
+    'bootstrap/dist/css/bootstrap.css'
+  ],
   generate: {
     dir: 'docs'
   },
